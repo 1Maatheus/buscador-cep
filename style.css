@@ -148,3 +148,19 @@ body {
     opacity: 1;
   }
 }
+
+@media (max-width: 420px) {
+  .header {
+    font-size: 0.7em;
+  }
+
+  .cep-input {
+    margin-top: 3em;
+    gap: 1em;
+    flex-direction: column;
+  }
+
+  .insert {
+    width: 340px;
+  }
+}
