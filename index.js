@@ -1,21 +1,27 @@
-const btn = document.querySelector(".btn-generator");
-const divPic = document.querySelector(".dog-container");
-const input = document.querySelector(".input");
-const name = document.querySelector(".name");
+const input = document.querySelector(".input-search");
+const btn = document.querySelector(".btn-search");
+const divCep = document.querySelector(".cep-address");
+const divCity = document.querySelector(".cep-city");
+const divDistrict = document.querySelector(".cep-district");
+const divState = document.querySelector(".cep-state");
+const divResult = document.querySelector(".cep-content-container");
 
-const getDogPic = async () => {
-  // const cep = input.value;
+const getCep = async () => {
+  const cep = input.value;
 
-  const apiUrl = `https://api.unsplash.com/photos/random`;
+  const apiUrl = `https://cep.awesomeapi.com.br/json/${cep}`;
   const res = await fetch(apiUrl);
   const data = await res.json();
 
-  // divPic.innerHTML = `<img class="img-dog" src="${data[0].url}" />`;
-  // // name.innerHTML = `<h1>${data.name}</h1>`;
-  // divPic.classList.add("show");
+  divCep.innerHTML = `<h1>${data.address}</h1>`;
+  divCity.innerHTML = `<h1>${data.city}</h1>`;
+  divDistrict.innerHTML = `<h1>${data.district}</h>`;
+  divState.innerHTML = `<h1>${data.state}</h1>`;
+  divResult.classList.add("show");
+
   console.log(data);
 };
 
 btn.addEventListener("click", () => {
-  getDogPic();
+  getCep();
 });
