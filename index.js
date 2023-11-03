@@ -1,9 +1,9 @@
 const input = document.querySelector(".input-search");
 const btn = document.querySelector(".btn-search");
-const divCep = document.querySelector(".cep-address");
-const divCity = document.querySelector(".cep-city");
-const divDistrict = document.querySelector(".cep-district");
-const divState = document.querySelector(".cep-state");
+const divCep = document.querySelector(".logradouro");
+const divCity = document.querySelector(".cidade");
+const divDistrict = document.querySelector(".bairro");
+const divState = document.querySelector(".estado");
 const divResult = document.querySelector(".cep-content-container");
 
 const getCep = async () => {
@@ -13,13 +13,15 @@ const getCep = async () => {
   const res = await fetch(apiUrl);
   const data = await res.json();
 
-  divCep.innerHTML = `<h1>${data.address}</h1>`;
-  divCity.innerHTML = `<h1>${data.city}</h1>`;
-  divDistrict.innerHTML = `<h1>${data.district}</h>`;
-  divState.innerHTML = `<h1>${data.state}</h1>`;
-  divResult.classList.add("show");
-
-  console.log(data);
+  if (input.value === "") {
+    alert("Por favor, insira o CEP.");
+  } else {
+    divCep.innerHTML = `<p>${data.address}</p>`;
+    divCity.innerHTML = `<p>${data.city}</p>`;
+    divDistrict.innerHTML = `<p>${data.district}</p>`;
+    divState.innerHTML = `<p>${data.state}</p>`;
+    divResult.classList.add("show");
+  }
 };
 
 btn.addEventListener("click", () => {
