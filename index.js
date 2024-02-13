@@ -14,7 +14,7 @@ const getCep = async () => {
   const data = await res.json();
 
   if (input.value === "") {
-    alert("Por favor, insira o CEP.");
+    alert("Por favor, insira um CEP válido para prosseguir.");
   } else {
     divCep.innerHTML = `<p>${data.address}</p>`;
     divCity.innerHTML = `<p>${data.city}</p>`;
